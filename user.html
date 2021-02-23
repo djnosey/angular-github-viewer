@@ -1,0 +1,33 @@
+<div id="userDetails" ng-show="user">
+  {{error}}
+  <h2>{{user.name}}</h2>
+  <img
+    ng-src="http://www.gravatar.com/avatar/{{user.gravatar_id}}"
+    alt="{{user.name}}"
+  />
+  order:
+  <select ng-model="repoSortOrder">
+    <option value="+name">name</option>
+    <option value="-stargazers_count">stars</option>
+    <option value="+language">language</option>
+  </select>
+</div>
+
+<table ng-show="user">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>stars</th>
+      <th>language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="repo in repos |orderBy :repoSortOrder">
+      <td>
+        <a href="#!/repos/{{user.login}}/{{repo.name}}">{{repo.name}}</a>
+      </td>
+      <td>{{repo.stargazers_count | number}}</td>
+      <td>{{repo.language}}</td>
+    </tr>
+  </tbody>
+</table>

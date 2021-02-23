@@ -1,0 +1,10 @@
+<div>{{repo.name}}</div>
+issues : {{repo.open_issues_count}}
+
+<div>
+  <ul>
+    <li ng-repeat="user in repo.collaborators">{{user.login}}</li>
+  </ul>
+</div>
+
+<a href="#!/main"></a>
